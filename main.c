@@ -66,6 +66,10 @@ void update_board(void) {
             continue;
           }
 
+          if (row == i && col == j) {
+            continue;
+          }
+
           sum += grid[row][col][current];
         }
       }
@@ -78,7 +82,6 @@ void update_board(void) {
         /* Any living cell with 2 or 3 live neighbors continues to be alive */
         /* Any living cell with more than 3 live neighbors dies */
         *future_cell = sum == 2 || sum == 3;
-        printf("Setting future cell \n");
       } else {
         /* Any dead cell with 3 live neighbors becomes a live cell */
         *future_cell = sum == 3;
